@@ -1,0 +1,12 @@
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# macOS
+.DS_Store
+
+# Data are downloaded by scripts/01_download_data.R, so they are not stored in Git
+data/raw/
+data/processed/
