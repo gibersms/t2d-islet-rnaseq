@@ -94,7 +94,25 @@ annot_url <- paste0("https://www.ncbi.nlm.nih.gov/geo/download/",
                     annotation_file_name())
 if (!file.exists(annot_file)) {
   message("Downloading gene annotation ...")
-  download.file(annot_url, annot_file, mode = "wb")
+  tryCatch(download.file(annot_url, annot_file, mode = "wb"),
+           error = function(e) message("Download failed: ", conditionMessage(e)))
+}
+
+# NCBI sometimes answers with a "check you're not a robot" web page instead
+# of the file. Check the first line really is the annotation table header.
+annot_first <- ""
+if (file.exists(annot_file)) {
+  con <- gzfile(annot_file)
+  annot_first <- readLines(con, n = 1, warn = FALSE)
+  close(con)
+  if (length(annot_first) == 0) annot_first <- ""
+}
+if (!grepl("GeneID", annot_first)) {
+  if (file.exists(annot_file)) file.remove(annot_file)
+  stop("The gene annotation file didn't download properly (NCBI may have shown\n",
+       "a robot check). Download it in your browser instead:\n  ", annot_url, "\n",
+       "and save it as ", annot_file, "\n",
+       "Then run this script again.", call. = FALSE)
 }
 
 counts_preview <- read.delim(counts_file, nrows = 3, check.names = FALSE)

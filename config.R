@@ -20,9 +20,9 @@ NCBI_BUILD <- "GRCh38.p13"
 #   GROUP_COLUMN  <- "diabetes status:ch1"
 #   CONTROL_LABEL <- "ND"
 #   CASE_LABEL    <- "T2D"
-GROUP_COLUMN  <- "FILL_ME_IN"   # column that holds the diagnosis
-CONTROL_LABEL <- "FILL_ME_IN"   # value meaning non-diabetic
-CASE_LABEL    <- "FILL_ME_IN"   # value meaning type 2 diabetes
+GROUP_COLUMN  <- "diabetes status:ch1"   # column that holds the diagnosis
+CONTROL_LABEL <- "ND"   # value meaning non-diabetic
+CASE_LABEL    <- "T2D"   # value meaning type 2 diabetes
 
 # ---- Covariates (optional) -------------------------------------------
 # Other sample characteristics to adjust for in the model, written as
