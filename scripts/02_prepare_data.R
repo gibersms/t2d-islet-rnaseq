@@ -53,6 +53,19 @@ info <- sample_info[keep, , drop = FALSE]
 log_msg("Kept ", sum(keep), " samples (", CONTROL_LABEL, " + ", CASE_LABEL,
         "); excluded ", sum(!keep), " from other groups.")
 
+# Optional extra filter, e.g. keep only samples in the authors' QC subset
+if (!is.na(SUBSET_COLUMN)) {
+  if (!SUBSET_COLUMN %in% colnames(info)) {
+    stop("SUBSET_COLUMN '", SUBSET_COLUMN, "' is not in the sample information.",
+         call. = FALSE)
+  }
+  in_subset <- trimws(as.character(info[[SUBSET_COLUMN]])) == SUBSET_VALUE
+  in_subset[is.na(in_subset)] <- FALSE
+  log_msg("Subset filter: kept samples where '", SUBSET_COLUMN, "' = ",
+          SUBSET_VALUE, "; excluded ", sum(!in_subset), " samples.")
+  info <- info[in_subset, , drop = FALSE]
+}
+
 # ---- 2. Match sample information to count columns -----------------------
 if (anyDuplicated(info$geo_accession)) stop("Duplicated sample IDs found.")
 no_counts <- setdiff(info$geo_accession, colnames(counts_all))

@@ -13,25 +13,28 @@ GSE_ID <- "GSE164416"
 NCBI_BUILD <- "GRCh38.p13"
 
 # ---- Groups to compare ----------------------------------------------
-# Run scripts/01_download_data.R first. It prints every sample
-# characteristic it finds. Copy the exact column name and values here.
-#
-# Example (yours may differ!):
-#   GROUP_COLUMN  <- "diabetes status:ch1"
-#   CONTROL_LABEL <- "ND"
-#   CASE_LABEL    <- "T2D"
-GROUP_COLUMN  <- "diabetes status:ch1"   # column that holds the diagnosis
-CONTROL_LABEL <- "ND"   # value meaning non-diabetic
-CASE_LABEL    <- "T2D"   # value meaning type 2 diabetes
+# Column in the sample information that holds the diagnosis, and the
+# values for the two groups being compared.
+GROUP_COLUMN  <- "diabetes status:ch1"
+CONTROL_LABEL <- "ND"    # non-diabetic
+CASE_LABEL    <- "T2D"   # type 2 diabetes
+
+# ---- Optional sample filter -------------------------------------------
+# Keep only samples with a given value in another column, e.g. the
+# authors' filtered subset:
+#   SUBSET_COLUMN <- "in_ins_filtered_data_subset:ch1"
+#   SUBSET_VALUE  <- "TRUE"
+# Leave both as NA to keep all samples in the two groups.
+SUBSET_COLUMN <- NA
+SUBSET_VALUE  <- NA
 
 # ---- Covariates (optional) -------------------------------------------
 # Other sample characteristics to adjust for in the model, written as
 #   short_name = "exact GEO column name"
-# Leave as character(0) to run without adjustment.
-#
-# Example:
-#   COVARIATES <- c(sex = "gender:ch1", age = "age:ch1")
-COVARIATES <- character(0)
+# GEO has no sex, age or BMI for this dataset, so we adjust for the date
+# each library was prepared (a technical batch effect).
+# Use character(0) to run without adjustment.
+COVARIATES <- c(batch = "library_prep_date:ch1")
 
 # ---- Analysis thresholds ---------------------------------------------
 FDR_CUTOFF <- 0.05   # adjusted p-value cut-off for "significant"

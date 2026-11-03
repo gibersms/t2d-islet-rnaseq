@@ -37,15 +37,17 @@ check_filled <- function(value, setting) {
 }
 
 # Turn a column of GEO text into a covariate R can use in a model.
-# Mostly-numeric columns (e.g. "62" or "62 years") become numbers;
-# anything else (e.g. "Male"/"Female") becomes a factor.
+# Columns that hold plain numbers (e.g. "62" or "62 years") become numbers;
+# anything else (e.g. "Male"/"Female", or dates like "16/01/2014")
+# becomes a factor (a category).
 as_covariate <- function(x) {
   x <- trimws(as.character(x))
   x[x %in% c("", "NA", "N/A", "n/a", "na", "unknown", "Unknown",
              "not available", "--")] <- NA
   present <- !is.na(x)
+  looks_numeric <- grepl("^-?[0-9]+(\\.[0-9]+)?\\s*[A-Za-z%]*$", x[present])
 
-  if (sum(present) > 0 && mean(grepl("[0-9]", x[present])) >= 0.9) {
+  if (sum(present) > 0 && mean(looks_numeric) >= 0.9) {
     number <- rep(NA_real_, length(x))
     for (i in which(present)) {
       hit <- regmatches(x[i], regexpr("-?[0-9]+(\\.[0-9]+)?", x[i]))

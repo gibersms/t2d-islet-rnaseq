@@ -1,0 +1,23 @@
+
+==== Step 2 - Prepare data (2026-11-03 21:34) ====
+Dataset: GSE164416
+Count table: 39376 genes x 133 samples
+Samples per group in the full dataset:
+  IFG: 3
+  IGT: 38
+  ND: 18
+  T2D: 39
+  T3cD: 35
+Kept 57 samples (ND + T2D); excluded 76 from other groups.
+Covariate 'batch' (from 'library_prep_date:ch1') treated as a category
+Final samples per group:
+  ND: 18
+  T2D: 39
+  batch by group:
+     v
+      X16.01.2014 X24.07.2015 X24.11.2016 X26.02.2013 X27.03.2014 X30.06.2014
+  ND            4           8           0           0           3           3
+  T2D           2          16           1           2          13           5
+Reads counted per sample (millions): min 4.4, median 22.2, max 39.5
+Genes kept after low-count filter (>= 10 reads in >= 18 samples): 19396 of 39376
+Saved prepared data to data/processed/
