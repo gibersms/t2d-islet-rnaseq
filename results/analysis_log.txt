@@ -21,3 +21,10 @@ Final samples per group:
 Reads counted per sample (millions): min 4.4, median 22.2, max 39.5
 Genes kept after low-count filter (>= 10 reads in >= 18 samples): 19396 of 39376
 Saved prepared data to data/processed/
+
+==== Step 3 - Quality checks (2026-11-04 22:41) ====
+Model design: ~batch + condition
+Samples with < 25% of the median reads (check them): GSM5009266, GSM5009267, GSM5009280, GSM5009293
+PCA: no sample is more than 3 SD from the centre on PC1 or PC2.
+PC1 explains 45% and PC2 14.9% of the variance (500 most variable genes).
+Saved figures 01-03 to results/figures/
