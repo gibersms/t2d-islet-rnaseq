@@ -28,3 +28,22 @@ Samples with < 25% of the median reads (check them): GSM5009266, GSM5009267, GSM
 PCA: no sample is more than 3 SD from the centre on PC1 or PC2.
 PC1 explains 45% and PC2 14.9% of the variance (500 most variable genes).
 Saved figures 01-03 to results/figures/
+
+==== Step 4 - Differential expression (2026-11-06 23:10) ====
+Size factors range from 0.25 to 2.05
+DESeq2 summary for T2D vs ND:
+
+out of 19396 with nonzero total read count
+adjusted p-value < 0.05
+LFC > 0 (up)       : 1638, 8.4%
+LFC < 0 (down)     : 1316, 6.8%
+outliers [1]       : 17, 0.088%
+low counts [2]     : 753, 3.9%
+(mean count < 9)
+[1] see 'cooksCutoff' argument of ?results
+[2] see 'independentFiltering' argument of ?results
+
+Genes tested: 19396 (padj is NA for 770 genes removed by DESeq2's independent filtering or outlier detection)
+Genes with FDR < 0.05: 2954 (1638 higher in T2D, 1316 lower in T2D)
+Of these, genes with shrunken |log2FC| >= 1 (at least 2-fold): 401
+Saved results tables to results/tables/
