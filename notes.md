@@ -1,7 +1,5 @@
 # My project notes
 
-Read each line. If you understand it, leave it. If you'd say it differently, rewrite it in your own words. If you don't understand it, ask Claude.
-
 ## Monday 2 Nov: getting the data
 
 - I downloaded public RNA-seq data from GEO, dataset GSE164416 (Wigger et al., Nature Metabolism 2021).
@@ -92,3 +90,13 @@ Pattern and comparison with published work:
 - That study came from the same research group and similar patients, so this shows consistency, not fully independent proof.
 - Two of my top three (ARG2, SLC2A2) are beta-cell function genes and both are lower in T2D, which fits failing beta cells. It could also partly reflect fewer beta cells in the tissue.
 - LOC105376812 is about 48 times higher in T2D, which is suspiciously large. Check on Saturday whether only a few samples drive it.
+
+## Saturday 7 Nov: P-value histogram, MA plot, Volcano plot, and Heatmap
+
+Two patterns separated T2D from non-diabetic islets. Genes involved in beta-cell function, such as ARG2 and SLC2A2, were modestly but consistent lower in T2D across patients.
+A second group, including antibody(immunoglobulin) and inflammation-related genes, was much higher in a subset of T2d patients.
+This suggests that immune cells or inflammation in some samples rather than a change shared by every patient.
+
+Comparison with published work: I compared my results with a published 19-gene T2D islet signature (Solimena et al., Diabetologia 2018).
+14 of the 19 genes were significant in my data, all in the same direction, including ARG2, SLC2A2, TMEM37 and PPP1R1A. Of the other five, four went the same direction without reaching significance (FFAR4 just missed, padj 0.059), and one (FAM102B) was filtered out for low counts.
+None went the opposite way. The two studies share a research group and probably some patients, so this shows consistency rather than independent confirmation.

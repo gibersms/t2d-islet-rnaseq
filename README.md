@@ -114,4 +114,4 @@ docs/session_info.txt     R and package versions
 
 The analysis follows the DESeq2 vignette (Love, Huber & Anders, *Genome Biology* 2014). Data from Wigger et al. (2021) via NCBI GEO.
 
-[Your name] · [LinkedIn] · [email]
+Gibran Salafy · https://www.linkedin.com/in/gibers/ · gibransalafyy@gmail.com
