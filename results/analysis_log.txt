@@ -47,3 +47,6 @@ Genes tested: 19396 (padj is NA for 770 genes removed by DESeq2's independent fi
 Genes with FDR < 0.05: 2954 (1638 higher in T2D, 1316 lower in T2D)
 Of these, genes with shrunken |log2FC| >= 1 (at least 2-fold): 401
 Saved results tables to results/tables/
+
+==== Step 5 - Figures (2026-11-07 13:04) ====
+Saved figures 04-08 to results/figures/
